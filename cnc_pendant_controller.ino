@@ -1,5 +1,4 @@
 #include <Keyboard.h>
-#define PRESS_MS 10
 #define LEFT_PIN 2
 #define RIGHT_PIN 3
 #define UP_PIN 4
@@ -14,30 +13,14 @@ void setup() {
   delay(1);
 }
 
-void loop() {
-    
-}
-
-void left(){
-  Keyboard.press(KEY_LEFT_ARROW);
-  delay(PRESS_MS);  
-  Keyboard.releaseAll();
-}
-
-void right(){
-  Keyboard.press(KEY_RIGHT_ARROW);
-  delay(PRESS_MS);  
-  Keyboard.releaseAll();  
-}
-
-void up(){
-  Keyboard.press(KEY_UP_ARROW);
-  delay(PRESS_MS);  
-  Keyboard.releaseAll();
-}
-
-void down(){
-  Keyboard.press(KEY_DOWN_ARROW);
-  delay(PRESS_MS);  
-  Keyboard.releaseAll();
+void loop() {  
+  if(digitalRead(LEFT_PIN)==HIGH){
+    Keyboard.write(KEY_LEFT_ARROW);
+  } else if (digitalRead(RIGHT_PIN)==HIGH) {
+    Keyboard.write(KEY_RIGHT_ARROW);    
+  } else if (digitalRead(UP_PIN)==HIGH) {
+    Keyboard.write(KEY_UP_ARROW);
+  } else if (digitalRead(DOWN_PIN)==HIGH) {
+    Keyboard.write(KEY_DOWN_ARROW);
+  }
 }
